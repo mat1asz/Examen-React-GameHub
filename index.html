@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GameHub - Tu catálogo de videojuegos definitivo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./js/app.js"></script>
+    <script defer src="./js/login.js"></script>
+  </head>
+  <body class="gaming-background">
+    <header>
+      <div class="brand-container">
+        <h1 class="logo-title">🎮 GAMEHUB</h1>
+        <p class="slogan">Tu catálogo de videojuegos definitivo</p>
+      </div>
+      <div class="login-container">
+        <form id="loginForm" style="display: none">
+          <input type="text" id="username" placeholder="Usuario" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Contraseña"
+            required
+          />
+          <button type="submit" class="btn-gaming">Ingresar</button>
+        </form>
+        <div id="userInfo" style="display: none">
+          <span id="userNameDisplay"></span>
+          <button id="logoutBtn" class="btn-gaming-secondary">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article class="container loading">
+        <div class="loader"></div>
+      </article>
+    </main>
+    <footer>
+      <p>🎮 GameHub © 2024 - Tu portal de videojuegos | Juega Responsablemente 🕹️</p>
+    </footer>
+  </body>
+</html>
+

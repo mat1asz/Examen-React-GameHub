@@ -1,0 +1,50 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "firstName": "Alex",
+      "lastName": "Gamer",
+      "username": "alexg",
+      "password": "alexgpass",
+      "rol": "Administrador",
+      "email": "alex@gamehub.com"
+    },
+    {
+      "id": 2,
+      "firstName": "María",
+      "lastName": "Player",
+      "username": "mariap",
+      "password": "mariappass",
+      "rol": "Editor",
+      "email": "maria@gamehub.com"
+    },
+    {
+      "id": 3,
+      "firstName": "Carlos",
+      "lastName": "Streamer",
+      "username": "carloss",
+      "password": "carlosspass",
+      "rol": "Moderador",
+      "email": "carlos@gamehub.com"
+    },
+    {
+      "id": 4,
+      "firstName": "Laura",
+      "lastName": "ProGamer",
+      "username": "laural",
+      "password": "lauralpass",
+      "rol": "Revisor",
+      "email": "laura@gamehub.com"
+    },
+    {
+      "id": 5,
+      "firstName": "Diego",
+      "lastName": "GameMaster",
+      "username": "diegod",
+      "password": "diegodpass",
+      "rol": "Supervisor",
+      "email": "diego@gamehub.com"
+    }
+  ]
+}
+
