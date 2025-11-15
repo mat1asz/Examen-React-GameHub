@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>404 - Página no encontrada | GameHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: bold;
+        color: var(--gaming-green);
+        text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+        margin: 0;
+        line-height: 1;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.05);
+        }
+      }
+
+      .error-title {
+        font-size: 2.5rem;
+        color: var(--gaming-white);
+        margin: 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .error-message {
+        font-size: 1.3rem;
+        color: var(--gaming-white);
+        margin: 1rem 0 2rem 0;
+        opacity: 0.9;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+
+      .error-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .btn-home {
+        margin-top: 2rem;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body class="gaming-background">
+    <header>
+      <div class="brand-container">
+        <h1 class="logo-title">🎮 GAMEHUB</h1>
+        <p class="slogan">Tu catálogo de videojuegos definitivo</p>
+      </div>
+    </header>
+    <main>
+      <div class="error-container">
+        <div class="error-icon">🎮</div>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Página no encontrada</h2>
+        <p class="error-message">
+          Parece que este juego se perdió en el multiverso 🎮<br />
+          La página que buscas no existe o ha sido movida a otra dimensión.
+        </p>
+        <a href="./index.html" class="btn-gaming btn-home">
+          Volver al inicio
+        </a>
+      </div>
+    </main>
+    <footer>
+      <p>🎮 GameHub © 2024 - Tu portal de videojuegos | Juega Responsablemente 🕹️</p>
+    </footer>
+  </body>
+</html>
+
