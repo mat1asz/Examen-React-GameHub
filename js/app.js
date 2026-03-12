@@ -1,5 +1,5 @@
 const plataformas = ['PC', 'PlayStation', 'Xbox', 'Nintendo'].sort()
-const URL = './data/videojuegos.json'
+const URL = 'http://localhost:3000/api/videojuegos'
 let videojuegos
 let armoHTML
 

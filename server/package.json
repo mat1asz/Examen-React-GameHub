@@ -1,0 +1,48 @@
+{
+  "name": "gamehub-server",
+  "version": "1.0.0",
+  "description": "Servidor Express para GameHub - API REST para examen de migración a React",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "gamehub",
+    "examen"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
+{
+  "name": "gamehub-backend",
+  "version": "1.0.0",
+  "description": "Backend minimalista en Express para el proyecto educativo GameHub.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "express",
+    "backend",
+    "gamehub",
+    "educativo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}
+

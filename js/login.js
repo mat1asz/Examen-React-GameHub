@@ -1,4 +1,4 @@
-const URL_USUARIOS = './data/usuarios.json'
+const URL_LOGIN = 'http://localhost:3000/api/login'
 const loginForm = document.getElementById('loginForm')
 const userInfo = document.getElementById('userInfo')
 const userNameDisplay = document.getElementById('userNameDisplay')
@@ -14,14 +14,26 @@ if (currentUser) {
   loginForm.style.display = 'flex'
 }
 
-// Función para validar el login
+// Función para validar el login contra el backend (POST /api/login)
 const validarUsuario = async (username, password) => {
   try {
-    const response = await fetch(URL_USUARIOS)
-    const datos = await response.json()
-    return datos.usuarios.find(user => user.username === username && user.password === password)
+    const response = await fetch(URL_LOGIN, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+
+    if (!response.ok) {
+      // 401 u otros códigos se interpretan como credenciales inválidas
+      return null
+    }
+
+    const usuario = await response.json()
+    return usuario
   } catch (error) {
-    console.error('Error al cargar el archivo de usuarios:', error)
+    console.error('Error al hacer login contra la API:', error)
     return null
   }
 }

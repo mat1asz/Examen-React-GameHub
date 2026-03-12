@@ -1,4 +1,4 @@
-const URL = './data/videojuegos.json'
+const URL = 'http://localhost:3000/api/videojuegos'
 const juegoDetailsContainer = document.querySelector('.clase-details')
 
 // Obtener el ID de la URL
@@ -7,21 +7,17 @@ const juegoId = parseInt(params.get('id'))
 
 const getJuegoDetails = async () => {
   try {
-    const response = await fetch(URL)
-    const data = await response.json()
-    // data es un objeto agrupado por plataforma: { PC: [...], PlayStation: [...], Xbox: [...], Nintendo: [...] }
-    // Necesitamos buscar el videojuego en todas las plataformas
-    const todosLosVideojuegos = Object.values(data).flat()
-    const juego = todosLosVideojuegos.find(item => item.id === juegoId)
-    
-    // Determinar la plataforma del videojuego buscando en qué clave del objeto está
+    const response = await fetch(`${URL}/${juegoId}`)
+    const juego = await response.json()
+
+    const responseAll = await fetch(URL)
+    const data = await responseAll.json()
+
     let plataformaJuego = null
-    if (juego) {
-      for (const [plataforma, videojuegos] of Object.entries(data)) {
-        if (videojuegos.some(v => v.id === juegoId)) {
-          plataformaJuego = plataforma
-          break
-        }
+    for (const [plataforma, videojuegos] of Object.entries(data)) {
+      if (videojuegos.some(v => v.id === juegoId)) {
+        plataformaJuego = plataforma
+        break
       }
     }
 
