@@ -1,7 +1,6 @@
-## Rúbrica corta - Examen React GameHub
+## Rúbrica - Examen React GameHub
 
 Puntaje total sugerido: **100 puntos**.  
-Puedes ajustar valores según tu curso.
 
 ---
 

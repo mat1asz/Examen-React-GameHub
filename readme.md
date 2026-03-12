@@ -1,4 +1,4 @@
-## Examen Práctico - React GameHub (versión corta)
+## Examen Práctico - React GameHub 
 
 **Objetivo general**  
 Migrar la app GameHub (hecha en JS vanilla) a una **SPA en React**, reutilizando la **API Express** existente.
