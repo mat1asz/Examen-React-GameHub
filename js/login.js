@@ -1,3 +1,11 @@
+/**
+ * login.js
+ * 
+ * Este archivo maneja la autenticación y la cabecera dinámica en Vanilla JS.
+ * En React: toda esta lógica debería encapsularse dentro de un `AuthContext.jsx` 
+ * (y un hook `useAuth`) para que el `user` esté disponible como estado global en toda la SPA sin prop drilling.
+ */
+
 const URL_LOGIN = 'http://localhost:3000/api/login'
 const loginForm = document.getElementById('loginForm')
 const userInfo = document.getElementById('userInfo')
@@ -5,6 +13,7 @@ const userNameDisplay = document.getElementById('userNameDisplay')
 const logoutBtn = document.getElementById('logoutBtn')
 
 // Mostrar el nombre de usuario almacenado al cargar la página
+// En React: El localStorage se leería al inicializar el `useState` del Contexto.
 const currentUser = window.localStorage.getItem('usuario')
 const currentRole = window.localStorage.getItem('rol')
 
@@ -15,6 +24,7 @@ if (currentUser) {
 }
 
 // Función para validar el login contra el backend (POST /api/login)
+// En React: Esta lógica de fetch pertenece a la función `login()` expuesta por el AuthContext.
 const validarUsuario = async (username, password) => {
   try {
     const response = await fetch(URL_LOGIN, {

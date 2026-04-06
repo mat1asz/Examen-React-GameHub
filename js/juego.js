@@ -1,10 +1,24 @@
+/**
+ * juego.js
+ * 
+ * Este archivo se encarga de mostrar el detalle de un juego buscando el `id` en la URL.
+ * En React:
+ * 1. Obtenemos el `id` mediante el hook `useParams()` de react-router-dom.
+ * 2. Usamos un `useEffect` con la dependencia `[id]` para buscar los datos.
+ * 3. Mostramos las etiquetas JSX asociadas al componente (por ejemplo, <GameDetailPage />).
+ */
+
 const URL = 'http://localhost:3000/api/videojuegos'
 const juegoDetailsContainer = document.querySelector('.clase-details')
 
-// Obtener el ID de la URL
+// Obtener el ID de la URL. En React se hace con useParams()
 const params = new URLSearchParams(window.location.search)
 const juegoId = parseInt(params.get('id'))
 
+/**
+ * Función que realiza el fetch.
+ * En React: esto iría dentro del cuerpo del `useEffect` de la página de detalle.
+ */
 const getJuegoDetails = async () => {
   try {
     const response = await fetch(`${URL}/${juegoId}`)

@@ -1,8 +1,22 @@
+/**
+ * app.js
+ * 
+ * Este archivo renderiza la lista de videojuegos agrupados por plataforma.
+ * En tu versión de React, esta lógica se divide normalmente en varios componentes:
+ * - <HomePage /> (página principal)
+ * - <CategoriaSection /> (para agrupar por plataforma iterando sobre 'plataformas')
+ * - <GameCard /> (para mostrar cada tarjeta interactiva)
+ */
+
 const plataformas = ['PC', 'PlayStation', 'Xbox', 'Nintendo'].sort()
 const URL = 'http://localhost:3000/api/videojuegos'
 let videojuegos
 let armoHTML
 
+/**
+ * Genera el HTML para la tarjeta de un juego.
+ * En React: Se convertiría en un componente <GameCard /> que recibe `juego` y `plataforma` como props.
+ */
 const retornoCard = (juego, plataforma) => {
   const { id, nombre, desarrollador, año, genero, imagen, dlcs_incluidos } = juego
   const dlcPrincipal = dlcs_incluidos && dlcs_incluidos.length > 0 ? dlcs_incluidos[0] : null
@@ -49,6 +63,12 @@ const retornoPlataforma = (plat) => {
 
 const container = document.querySelector('.container')
 
+/**
+ * Función para cargar los datos del backend.
+ * En React: Esto se ejecuta dentro de un `useEffect` durante el primer render (array de dependencias `[]`).
+ * Los datos ('videojuegos'), el estado de carga ('loading'), y el estado de error ('error') 
+ * se declaran usando el hook `useState`.
+ */
 const getVideojuegos = async (URL) => {
   armoHTML = ''
   try {
