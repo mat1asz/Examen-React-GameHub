@@ -53,10 +53,6 @@ export function HomePage() {
                 <h2>🎮 {grupo}</h2>
                 <div className="clases-grid" >{tarjetas}</div>
               </article>
-              <section>
-                <h2>{grupo}</h2>
-                <div>{tarjetas}</div>
-              </section>
             </Fragment>
           );
         })}

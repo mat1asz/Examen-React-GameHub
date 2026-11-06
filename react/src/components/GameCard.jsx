@@ -3,22 +3,15 @@ import { Link } from "react-router-dom";
 import { VerDatos } from "./VerDatos.jsx";
 
 export function GameCard({ juego, grupo }) {
-  /* ═══ PEGAR ACÁ (si hay): LO DE ARRIBA DEL HTML ═══
-     SALE DE: el mismo JS de donde sacás la tarjeta → la función que la arma
-              → desde la línea siguiente a su { de apertura hasta la línea anterior al return
-              (líneas como const { id, nombre } = algo  o  const algo = ...)
-     Si "algo" no se llama __ITEM__, cambiá esa palabra por __ITEM__.
-     Si la función recibía un 2.º dato (el nombre del grupo), acá ese dato se llama grupo.
-     Si el HTML usa una función que no copiaste (la consola dice "... is not defined"):
-     buscala en el mismo JS y copiala entera acá también.
-     Si no hay nada, borrá este comentario */
+  const { id, nombre, desarrollador, año, genero, imagen, dlcs_incluidos } = juego
+  const dlcPrincipal = dlcs_incluidos && dlcs_incluidos.length > 0 ? dlcs_incluidos[0] : null
 
   return (
     <>
 <div className="card">
-              <a href="juego.html?id={id}">
+              <Link to={`/juego/${id}`}>
                 <div className="card-picture">
-                    <img src="{imagen}" alt="{nombre}" title="{nombre}"/>
+                    <img src={imagen} alt={nombre} title={nombre}/>
                     <div className="card-badge">{grupo}</div>
                 </div>
                 <div className="card-content">
@@ -36,8 +29,8 @@ export function GameCard({ juego, grupo }) {
                     </div>
                     )} 
                 </div>
-              </a>
+              </Link>
             </div>
     </>
   );
-}
+} 

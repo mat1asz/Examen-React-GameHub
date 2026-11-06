@@ -109,7 +109,22 @@ let plataformaJuego = null
             
             <h3>💻 Requisitos del Sistema</h3>
             <div className="clase-meta">
-              {requisitosHTML}
+              <div className="meta-item">
+          <strong>💻 Procesador</strong>
+          <span>{juego.requisitos_sistema.procesador}</span>
+        </div>
+        <div className="meta-item">
+          <strong>🧠 Memoria</strong>
+          <span>{juego.requisitos_sistema.memoria}</span>
+        </div>
+        <div className="meta-item">
+          <strong>🎨 Gráfica</strong>
+          <span>{juego.requisitos_sistema.grafica}</span>
+        </div>
+        <div className="meta-item">
+          <strong>💾 Almacenamiento</strong>
+          <span>{juego.requisitos_sistema.almacenamiento}</span>
+        </div>
             </div>
             
             <h3>🎮 Modos de Juego</h3>
@@ -124,8 +139,8 @@ let plataformaJuego = null
           </div>
 
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="index.html" className="btn-gaming">Volver al catálogo</a>
+        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+          <Link to="/" className="btn-gaming">Volver al catálogo</Link>
         </div>
     </>
   );

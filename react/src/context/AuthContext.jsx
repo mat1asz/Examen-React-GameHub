@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext(null);
 
-const CLAVE = "usuarios";
+const CLAVE = "usuario";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
