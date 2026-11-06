@@ -1,57 +1,66 @@
+import { Fragment } from "react";
 import { useGames } from "../hooks/useGames.js";
 import { GameCard } from "../components/GameCard.jsx";
 
-const PLATFORMS = ["PC", "PlayStation", "Xbox", "Nintendo"];
-
-// Página principal: catálogo de videojuegos agrupados por plataforma.
-// Inspírate en la lógica de js/app.js (versión vanilla).
+function agrupar(lista, campo) {
+  const nombres = [...new Set(lista.map((x) => x[campo]))].sort();
+  return nombres.map((nombre) => [
+    nombre,
+    lista.filter((x) => x[campo] === nombre),
+  ]);
+}
 
 export function HomePage() {
-  const { gamesByPlatform, loading, error } = useGames();
+  const { datos, loading, error } = useGames();
 
   if (loading) {
     return (
-      <section className="status">
-        <h2>⏳ Cargando videojuegos...</h2>
-        <p>Estamos preparando tu catálogo gaming 🎮</p>
-      </section>
+      <article className="container loading">
+        <div className="loader"></div>
+      </article>
     );
   }
 
   if (error) {
     return (
-      <section className="status">
-        <h2>⚠️ Error al cargar videojuegos</h2>
+      <div className="error">
+        <h1>Error al cargar los datos</h1>
         <p>{error.message}</p>
-      </section>
+      </div>
     );
   }
 
-  if (!gamesByPlatform || typeof gamesByPlatform !== "object") {
+  const grupos = Object.entries(datos || {});
+  const conDatos = grupos.filter(([, items]) => items.length > 0);
+  if (conDatos.length === 0) {
     return (
-      <section className="status">
-        <h2>⚠️ Sin datos</h2>
-        <p>No se recibieron videojuegos desde la API.</p>
-      </section>
+      <div className="error">
+        <p>No hay datos para mostrar.</p>
+      </div>
     );
   }
 
   return (
-    <section>
-      <h1>Catálogo de videojuegos</h1>
-      <p>
-        Reimplementación en React de la aplicación GameHub. Los datos provienen de
-        la API Express.
-      </p>
-
-      {/* TODO:
-          - Revisa cómo se generan las secciones por plataforma en js/app.js.
-          - Aquí debes replicar esa idea usando JSX y el componente GameCard.
-      */}
-      <div className="grid-platforms">
-        
+    <>
+      <div className="container">
+        {conDatos.map(([grupo, items]) => {
+          const tarjetas = items.map((x) => (
+            <GameCard key={x.id} juego={x} grupo={grupo} />
+          ));
+          return (
+            <Fragment key={grupo}>
+              <article className="categoria">
+                <h2>🎮 {grupo}</h2>
+                <div className="clases-grid" >{tarjetas}</div>
+              </article>
+              <section>
+                <h2>{grupo}</h2>
+                <div>{tarjetas}</div>
+              </section>
+            </Fragment>
+          );
+        })}
       </div>
-    </section>
+    </>
   );
 }
-

@@ -1,65 +1,53 @@
+// PASO 1 · COPIAR (ya anda con lo provisorio)  ·  PASO 4 · PEGAR HTML (header, saludo, footer)
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
-
-// Layout principal de la app.
-// Incluye cabecera, navegación básica y pie de página.
-// El login se integra en la cabecera usando el contexto de autenticación.
+import { LoginForm } from "./LoginForm.jsx";
 
 export function Layout({ children }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const currentYear = new Date().getFullYear();
 
   const handleLogout = () => {
-    // TODO:
-    // - Implementar correctamente el cierre de sesión usando:
-    //    * `logout()` del contexto de autenticación.
-    //    * Navegación a la ruta que consideres apropiada (por ejemplo "/").
-    console.warn(
-      "TODO: implementar handleLogout en Layout (logout + navegación)",
-    );
+    logout();
+    navigate("/");
   };
 
-  return (
-    <div className="app-shell">
-      <header>
-        <div className="brand">
-          <span className="brand-title">🎮 GAMEHUB</span>
-          <span className="brand-subtitle">
-            Tu catálogo de videojuegos definitivo
-          </span>
-        </div>
-        <nav className="layout-nav">
-          <Link to="/">Inicio</Link>
+  // Si hay usuario se ve el saludo; si no, el formulario de login (ya está hecho, no se toca)
+  const areaLogin = user ? (
+    <>
+      <div id="userInfo">
+        <span id="userNameDisplay">
+          Bienvenido, {user.fullName} - {user.rol}
+        </span>
+        <button
+          id="logoutBtn"
+          className="btn-gaming-secondary"
+          onClick={handleLogout}
+        >
+          Cerrar sesión
+        </button>
+      </div>
+    </>
+  ) : (
+    <LoginForm />
+  );
 
-          {/* TODO:
-              - Mostrar el nombre del usuario y su rol cuando esté logueado,
-                de forma similar a la versión vanilla (login.js).
-              - Integrar aquí el formulario/botón de login si decides no usar
-                un componente de página separado.
-          */}
-          {user ? (
-            <>
-              <span className="user-chip">
-                Bienvenido, {user.fullName} - {user.rol}
-              </span>
-              <button
-                className="btn-gaming btn-secondary"
-                onClick={handleLogout}
-              >
-                Cerrar sesión
-              </button>
-            </>
-          ) : null}
-        </nav>
+  return (
+    <>
+      <header>
+        <div className="brand-container">
+          <h1 className="logo-title">🎮 GAMEHUB</h1>
+          <p className="slogan">Tu catálogo de videojuegos definitivo</p>
+        </div>
+        <div className="login-container">{areaLogin}</div>
       </header>
       <main>{children}</main>
       <footer>
         <p>
-          🎮 GameHub React © {currentYear} - Examen de Migración a React | Juega
-          Responsable 🕹️
+          🎮 GameHub © 2026 - Tu portal de videojuegos | Juega Responsablemente
+          🕹️
         </p>
       </footer>
-    </div>
+    </>
   );
 }

@@ -1,30 +1,24 @@
+// PASO 2 · REEMPLAZAR (Ctrl+H con la ficha)
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import { Layout } from "./components/Layout.jsx";
 import { HomePage } from "./pages/HomePage.jsx";
 import { GameDetailPage } from "./pages/GameDetailPage.jsx";
+import { NotFoundPage } from "./pages/NotFoundPage.jsx";
 
-// Componente raíz de la SPA.
-// AQUÍ debes definir las rutas principales usando React Router.
 export default function App() {
   return (
-    <Layout>
-        {/*
-          Ejemplo :
-
-          // 1) Ruta principal de catálogo:
-          //    - path: "/"
-          //    - componente: HomePage
-          //
-          // 2) Ruta de detalle de videojuego:
-          //    - path: "/juegos/:id"
-          //    - componente: GameDetailPage
-          //
-          // 3) Ruta comodín para 404:
-          //    - path: "*"
-          //    - componente: página de "no encontrado"
-
-          Sustituye este comentario por tu propia configuración de rutas.
-        */}
-    </Layout>
+    <BrowserRouter>
+      <AuthProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/juegos/:id" element={<GameDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

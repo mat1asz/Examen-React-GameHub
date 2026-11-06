@@ -1,35 +1,27 @@
+// PASO 2 · REEMPLAZAR (Ctrl+H con la ficha)
 import { useEffect, useState } from "react";
-
-// Custom hook para cargar los videojuegos desde la API.
-//
-// MUY IMPORTANTE :
-// - Aquí solo se define la **estructura básica** del hook.
-// - La lógica real de llamada a la API, manejo de errores y estados
+import { apiFetch } from "../api/client.js";
 
 export function useGames() {
-  const [gamesByPlatform, setGamesByPlatform] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [datos, setDatos] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // TODO:
-    // - Usar aquí `apiFetch` (u otra función que implementes) para llamar a
-    //   GET /api/videojuegos.
-    // - Actualizar `loading`, `error` y `gamesByPlatform` según el resultado.
-    // - Tener en cuenta el montaje/desmontaje del componente si es necesario.
-    //
-    // Pista:
-    // - El formato esperado de `gamesByPlatform` es un objeto:
-    //   { PC: [...], PlayStation: [...], Xbox: [...], Nintendo: [...] }
+    async function cargar() {
+      try {
+        setLoading(true);
+        setError(null);
+        const respuesta = await apiFetch("/videojuegos");
+        setDatos(respuesta);
+      } catch (e) {
+        setError(e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    cargar();
   }, []);
 
-  // Devolvemos el contrato que usarán las páginas/componente.
-  return {
-    gamesByPlatform,
-    loading,
-    error,
-    setGamesByPlatform,
-    setLoading,
-    setError,
-  };
+  return { datos, loading, error };
 }

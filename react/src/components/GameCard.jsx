@@ -1,35 +1,43 @@
+// PASO 2 · REEMPLAZAR (ya anda con lo provisorio)  ·  PASO 4 · PEGAR HTML (la tarjeta)
 import { Link } from "react-router-dom";
+import { VerDatos } from "./VerDatos.jsx";
 
-// Tarjeta de videojuego.
-// Debe reflejar, en espíritu, la card de la versión JS vanilla (js/app.js),
-// mostrando información básica del juego y su DLC principal (si existe).
-//
-// MUY IMPORTANTE :
-// - Este componente está SOLO esbozado.
-// - La estructura y el mapeo de datos reales desde `game` y `platform`
-//   deben ser IMPLEMENTADOS POR EL ALUMNO.
-
-export function GameCard({ game, platform }) {
-  // TODO:
-  //  - Leer de `game` las propiedades necesarias:
-  //      id, nombre, desarrollador, año, genero, imagen, dlcs_incluidos...
-  //  - Construir a partir de esos datos el contenido de la tarjeta.
-  //  - Respetar, en lo posible, la información que ya se muestra en la versión JS vanilla.
-  //
-  // Pista:
-  //  - Puedes inspirarte en `js/app.js` (función `retornoCard`) para decidir
-  //    qué campos mostrar y cómo organizarlos.
+export function GameCard({ juego, grupo }) {
+  /* ═══ PEGAR ACÁ (si hay): LO DE ARRIBA DEL HTML ═══
+     SALE DE: el mismo JS de donde sacás la tarjeta → la función que la arma
+              → desde la línea siguiente a su { de apertura hasta la línea anterior al return
+              (líneas como const { id, nombre } = algo  o  const algo = ...)
+     Si "algo" no se llama __ITEM__, cambiá esa palabra por __ITEM__.
+     Si la función recibía un 2.º dato (el nombre del grupo), acá ese dato se llama grupo.
+     Si el HTML usa una función que no copiaste (la consola dice "... is not defined"):
+     buscala en el mismo JS y copiala entera acá también.
+     Si no hay nada, borrá este comentario */
 
   return (
-    <article className="card">
-      {/* TODO:
-          - Reemplazar este bloque por el JSX definitivo de la tarjeta.
-          - Debe incluir al menos:
-              * Imagen del juego.
-              * Nombre, desarrollador, año y género.
-              * Enlace a la ruta de detalle usando el id del juego.
-              * Información del DLC principal (si existe).
-      */}
-    </article>
+    <>
+<div className="card">
+              <a href="juego.html?id={id}">
+                <div className="card-picture">
+                    <img src="{imagen}" alt="{nombre}" title="{nombre}"/>
+                    <div className="card-badge">{grupo}</div>
+                </div>
+                <div className="card-content">
+                    <h3 className="card-title">{nombre}</h3>
+                    <p className="card-instructor">👨‍💻 {desarrollador}</p>
+                    <div className="card-info">
+                        <span className="card-duration">📅 {año}</span>
+                        <span className="card-level">🎯 {genero}</span>
+                    </div>
+                    {dlcPrincipal && (
+                    <div className="card-beer">
+                        <p className="card-beer-title">🎁 DLC Incluido</p>
+                        <p className="card-beer-name">{dlcPrincipal.nombre}</p>
+                        <p className="card-beer-type">{dlcPrincipal.tipo}</p>
+                    </div>
+                    )} 
+                </div>
+              </a>
+            </div>
+    </>
   );
 }
